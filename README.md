@@ -1,11 +1,11 @@
-# Froxcey/Repo
+# Froxcey/Macchiato
 
 Frox's personal Homebrew repository
 
 ## Install
 
 ```sh
-brew tap froxcey/repo
+brew tap froxcey/macchiato
 ```
 
 ## Formulae

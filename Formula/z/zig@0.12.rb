@@ -8,7 +8,7 @@ class ZigAT012 < Formula
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://ziglang.org/builds/zig-macos-aarch64-0.12.0-dev.#{version}.tar.xz"
       sha256 "bf6265582e3de488d397d5a7c2a586058991829dcc7241e10bb4e96d48f7c85c"
-    else
+    elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-macos-x86_64-0.12.0-dev.#{version}.tar.xz"
       sha256 "d372f2fc63078cc2b42d8542e0d5ee209c58ae642904eb0d6a86adc5c1c3364b"
     else

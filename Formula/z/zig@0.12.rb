@@ -48,6 +48,8 @@ class ZigAT012 < Formula
       You might want to run
       $ brew link --overwrite zig@0.12
       to switch to the 0.12 version.
+      To switch back to the official version, run
+      $ brew link --overwrite zig
     EOS
   end
 

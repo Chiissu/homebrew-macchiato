@@ -41,6 +41,16 @@ class ZigAT012 < Formula
     prefix.install "lib"
   end
 
+  def caveats
+    return unless Formula["zig"].any_version_installed?
+    <<~EOS
+      ⚠️ You have the official zig package installed, which conflicts with this nightly version.
+      You might want to run
+      $ brew link --overwrite zig@0.12
+      to switch to the 0.12 version.
+    EOS
+  end
+
   test do
     (testpath/"hello.zig").write <<~EOS
       const std = @import("std");

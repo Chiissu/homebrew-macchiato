@@ -38,6 +38,7 @@ class ZigAT012 < Formula
 
   def install
     bin.install "zig"
+    prefix.install "lib"
   end
 
   test do

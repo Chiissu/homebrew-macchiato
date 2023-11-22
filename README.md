@@ -1,6 +1,6 @@
 # Froxcey/Macchiato
 
-Frox's personal Homebrew repository
+Frox's sweet Homebrew repository ☕
 
 ## Install
 

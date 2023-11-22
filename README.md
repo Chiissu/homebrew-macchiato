@@ -12,4 +12,8 @@ brew tap froxcey/repo
 
 ### zig@0.12
 
-Current nightly build of zig 0.12
+Current development build of zig v0.12
+
+```sh
+brew install zig@0.12
+```

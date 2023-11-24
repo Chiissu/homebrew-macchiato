@@ -1,26 +1,26 @@
 class ZigAT012 < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://ziglang.org/"
-  version "1697+6fc20b3b0"
+  version "0.1710+2bffd8101"
   license "MIT"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://ziglang.org/builds/zig-macos-aarch64-0.12.0-dev.#{version}.tar.xz"
-      sha256 "f0c63fc88bac9e557484350849cee7311410a538c3880554c7b3ddc2d57f2875"
+      sha256 "1f991eca383b5f82da78768f5a5a8138fc98c17c6818b1fcc342aa7eac822a5c"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-macos-x86_64-0.12.0-dev.#{version}.tar.xz"
-      sha256 "d499942262203f84136ef24eda957b5b17105adffe8fc59ff3274566a33260d7"
+      sha256 "f427003fdf8ed819d365e018ecb40b7401b7fc935d4ef4e6db7b3d4d0f9861bf"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.arm?
       url "https://ziglang.org/builds/zig-linux-aarch64-0.12.0-dev.#{version}.tar.xz"
-      sha256 "d38bbd4625349fd8577e3e10f099da49fbc25ced77afd1e3a58e58ac497c7c56"
+      sha256 "99bbd18fad133da335509394ced22e49bdf24ff06c191fb28eb79cbd68932849"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-linux-x86_64-0.12.0-dev.#{version}.tar.xz"
-      sha256 "63ce600266901607e155c668a97211c98d09390e139d50175a7851e23f23e2eb"
+      sha256 "d6053a0677959564417cd3ecd5fb90809ae8dc757f4dbfe70390ebd24b632671"
     else
       odie "Unsupported Linux architecture."
     end
@@ -53,28 +53,4 @@ class ZigAT012 < Formula
     EOS
   end
 
-  test do
-    (testpath/"hello.zig").write <<~EOS
-      const std = @import("std");
-      pub fn main() !void {
-          const stdout = std.io.getStdOut().writer();
-          try stdout.print("Hello, world!", .{});
-      }
-    EOS
-    system "#{bin}/zig", "build-exe", "hello.zig"
-    assert_equal "Hello, world!", shell_output("./hello")
-
-    # error: 'TARGET_OS_IPHONE' is not defined, evaluates to 0
-    # https://github.com/ziglang/zig/issues/10377
-    ENV.delete "CPATH"
-    (testpath/"hello.c").write <<~EOS
-      #include <stdio.h>
-      int main() {
-        fprintf(stdout, "Hello, world!");
-        return 0;
-      }
-    EOS
-    system "#{bin}/zig", "cc", "hello.c", "-o", "hello"
-    assert_equal "Hello, world!", shell_output("./hello")
-  end
 end

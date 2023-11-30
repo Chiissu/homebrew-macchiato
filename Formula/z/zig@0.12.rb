@@ -1,7 +1,7 @@
 class ZigAT012 < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://ziglang.org/"
-  version "0.1753+a98d4a66e"
+  version "0.1754+2a3226453"
   license "MIT"
 
   parts = version.to_s.split(".")
@@ -9,20 +9,20 @@ class ZigAT012 < Formula
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://ziglang.org/builds/zig-macos-aarch64-0.12.#{parts[0]}-dev.#{parts[1]}.tar.xz"
-      sha256 "ff66079cbb860bc7db1339097be33fdb42a6f088a741557ceae23dafcb9d56ee"
+      sha256 "4fe9a546a92c3f10dcfb83dd1043e2ef03f8f765f6b98ee8cfe98a212831ec57"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-macos-x86_64-0.12.#{parts[0]}-dev.#{parts[1]}.tar.xz"
-      sha256 "a23c927ec9a9cf9ef9d83561551ba7fa2046076b2f9813e8bfad9a5b80589bac"
+      sha256 "abec1fffe032c8a3469a3aba93019989df02d28db6d6e9d851b95d78dcdb3d14"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.arm?
       url "https://ziglang.org/builds/zig-linux-aarch64-0.12.#{parts[0]}-dev.#{parts[1]}.tar.xz"
-      sha256 "91c1d4bf2cd8d01979a467a3015d64a5b3b168f69972ee699dc6116f5661e270"
+      sha256 "faa99274c773eb798f36719b899119d9cfd93a1124e0d0bf363860a544d4db60"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-linux-x86_64-0.12.#{parts[0]}-dev.#{parts[1]}.tar.xz"
-      sha256 "f24000d71c08d14fd8a32a43f34b420c837147b58569dc95a1cc9d17707178e1"
+      sha256 "67e192d2a800af2b48c82ccc11efdc27da4223d555ad22852e1bf3792a0444b3"
     else
       odie "Unsupported Linux architecture."
     end
@@ -47,10 +47,9 @@ class ZigAT012 < Formula
     return unless Formula["zig"].any_version_installed?
     <<~EOS
       ⚠️ You have the official zig package installed, which conflicts with this nightly version.
-      You might want to run
+      To switch to the nightly version, run:
       $ brew link --overwrite zig@0.12
-      to switch to the 0.12 version.
-      To switch back to the official version, run
+      To switch back to the official version, run:
       $ brew link --overwrite zig
     EOS
   end

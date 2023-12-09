@@ -18,6 +18,14 @@ Current development build of zig v0.12
 brew install zig@0.12
 ```
 
+### [Notabena](https://github.com/ThatFrogDev/notabena/)
+
+Notabena, the pure Rust open-source note-taking app.
+
+```sh
+brew install --HEAD notabena
+```
+
 ## Casks
 
 ### [VencordInstaller](https://vencord.dev/)

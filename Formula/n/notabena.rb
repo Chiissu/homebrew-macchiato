@@ -2,6 +2,7 @@ class Notabena < Formula
   desc "Notabena, the pure Rust open-source note-taking app."
   homepage "https://github.com/ThatFrogDev/notabena"
   head "https://github.com/ThatFrogDev/notabena.git", branch: "stable"
+  license "GPL-3.0"
 
   depends_on "rust" => :build
 

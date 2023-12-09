@@ -1,11 +1,11 @@
-# Froxcey/Macchiato
+# Chiissu/Macchiato
 
-Frox's sweet Homebrew repository ☕
+A sweet Homebrew repository ☕
 
 ## Install
 
 ```sh
-brew tap froxcey/macchiato
+brew tap chiissu/macchiato
 ```
 
 ## Formulae

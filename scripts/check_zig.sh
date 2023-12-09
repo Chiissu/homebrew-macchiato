@@ -44,6 +44,7 @@ sed "s/$package_sha_linux_arm/$upstream_sha_linux_arm/g" "$package_path" > "$pac
 sed "s/$package_sha_linux_x64/$upstream_sha_linux_x64/g" "$package_path" > "$package_path.tmp" && mv "$package_path.tmp" "$package_path"
 
 git add "$package_path"
-commit_message = "[Autoupdate]: Sync zig@$CHECK_VERSION to $upstream_build"
+commit_message="[Autoupdate]: Sync zig@$CHECK_VERSION to $upstream_build"
 git commit -m "$commit_message"  > /dev/null
+echo "Created commit: $commit_message"
 echo "The zig@$CHECK_VERSION package has been upgraded to $upstream_build, please push to confirm"

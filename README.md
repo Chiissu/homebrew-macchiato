@@ -23,7 +23,7 @@ brew install zig@0.12
 Notabena, the pure Rust open-source note-taking app.
 
 ```sh
-brew install --HEAD notabena
+brew install notabena
 ```
 
 ## Casks

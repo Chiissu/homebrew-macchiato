@@ -2,12 +2,16 @@ name: Zig nightly update
 on:
   schedule:
     - cron: '16 0 * * *'
+  push:
+    branches:
+      - main
+      - 'releases/**'
 jobs:
   update-zig:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
           version: 12
       - run: npm install @octokit/action

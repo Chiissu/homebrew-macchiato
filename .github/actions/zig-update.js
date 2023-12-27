@@ -1,9 +1,9 @@
 const https = require("https");
 const fs = require("fs");
-const { execSync, exec } = require("child_process");
+const { execSync } = require("child_process");
 const { Octokit } = require("@octokit/action");
 
-const req = https.get("https://ziglang.org/download/index.json", (res) => {
+https.get("https://ziglang.org/download/index.json", (res) => {
   let data = "";
 
   // A chunk of data has been received.
@@ -18,7 +18,7 @@ const req = https.get("https://ziglang.org/download/index.json", (res) => {
   });
 });
 
-function check(data) {
+async function check(data) {
   if (!data.master.version.startsWith("0.12")) {
     console.error("Zig master is no longer on 0.12, please update");
     process.exit(1);
@@ -45,19 +45,31 @@ function check(data) {
     data.master["aarch64-linux"].shasum,
     data.master["x86_64-linux"].shasum,
   ];
-  file = file.replace(/sha256 "([a-f]|\d)*"/, () => {
+  file = file.replace(/sha256 "([a-f]|\d)*"/g, () => {
     replacementIndex++;
     return `sha256 "${newSHA[replacementIndex]}"`;
   });
 
   fs.writeFileSync(path, file);
 
+  execSync(
+    ` git config --global user.name "froxcey";
+      git config --global user.email "danichen204@gmail.com";
+      git add -A;
+      git commit -m "[Autoupdate]: Sync zig@0.12 to ${remoteVer}";
+      git push -f origin ${branchName};`,
+  );
+
   const octokit = new Octokit();
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-  octokit.git.createCommit({
+  octokit.pulls.create({
     owner,
     repo,
-    message: `"[Autoupdate]: Sync zig@0.12 to ${remoteVer}"`,
+    base: "main",
+    head: branchName,
+    title: `Nightly update: ${new Date()
+      .toLocaleDateString("en-GB", { day: "numeric", month: "short" })
+      .replace(" ", "-")}`,
+    body: `- Update Zig@0.12 to ${remoteVer}`,
   });
-  octokit.pulls.create({ owner, repo, base: "main", head: branchName });
 }

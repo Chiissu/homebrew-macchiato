@@ -23,14 +23,11 @@ async function check(data) {
     console.error("Zig master is no longer on 0.12, please update");
     process.exit(1);
   }
-  const path = "Formula/z/zig@0.12.rb";
+  const path = "Formula/z/zig-nightly.rb";
   var file = fs.readFileSync(path).toString();
-  const verMatch = /"[\d.]+[+-\w]+"/;
+  const verMatch = /"[\d.]+-dev\.[+-\w]+"/;
   const localVer = file.match(verMatch)[0].replaceAll('"', "");
-  const remoteVer = (() => {
-    let digits = data.master.version.split(/\.|-/);
-    return digits[2] + "." + digits[4];
-  })();
+  const remoteVer = data.master.version;
   if (localVer == remoteVer) return console.log("Nightly is up to date");
 
   const dateString = new Date()

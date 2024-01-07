@@ -46,7 +46,7 @@ class ZigNightly < Formula
     <<~EOS
       ⚠️ You have the official zig package installed, which conflicts with this nightly version.
       To switch to the nightly version, run:
-      $ brew link --overwrite zig@0.12
+      $ brew link --overwrite zig-nightly
       To switch back to the official version, run:
       $ brew link --overwrite zig
     EOS

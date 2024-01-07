@@ -10,12 +10,12 @@ brew tap chiissu/macchiato
 
 ## Formulae
 
-### [zig@0.12](https://ziglang.org/)
+### [zig-nightly](https://ziglang.org/)
 
-Current development build of zig v0.12
+Current nightly build of zig
 
 ```sh
-brew install zig@0.12
+brew install zig-nightly
 ```
 
 ### [Notabena](https://github.com/ThatFrogDev/notabena/)

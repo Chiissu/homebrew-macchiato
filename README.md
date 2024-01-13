@@ -15,6 +15,7 @@ brew tap chiissu/macchiato
 - [Disarm](https://newandroidbook.com/tools/disarm.html)
 - [Discordo](https://github.com/ayn2op/discordo)
 - [SDL3-nightly](https://github.com/libsdl-org/SDL/)
+  - [SDL3_image-nightly](https://github.com/libsdl-org/SDL_image)
 
 ## Casks
 

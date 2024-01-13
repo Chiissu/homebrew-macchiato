@@ -10,39 +10,13 @@ brew tap chiissu/macchiato
 
 ## Formulae
 
-### [zig-nightly](https://ziglang.org/)
-
-Current nightly build of zig
-
-```sh
-brew install zig-nightly
-```
-
-### [Notabena](https://github.com/ThatFrogDev/notabena/)
-
-Notabena, the pure Rust open-source note-taking app.
-
-```sh
-brew install notabena
-```
-
-### [Disarm](https://newandroidbook.com/tools/disarm.html)
-
-A super awesome binary analyzer
-
-> As of now, this repo only ships the nightly version
-
-```sh
-brew install disarm
-```
+- [Zig-nightly](https://ziglang.org/)
+- [Notabena](https://github.com/ThatFrogDev/notabena/)
+- [Disarm](https://newandroidbook.com/tools/disarm.html)
+- [Discordo](https://github.com/ayn2op/discordo)
+- [SDL3-nightly](https://github.com/libsdl-org/SDL/)
 
 ## Casks
 
-### [VencordInstaller](https://vencord.dev/)
-
-Helps you download the VencordInstaller
-
-```sh
-brew install --cask vencordinstaller
-```
+- [VencordInstaller](https://vencord.dev/)
 

@@ -1,40 +1,33 @@
 const https = require("https");
 const fs = require("fs");
-const { execSync } = require("child_process");
-const { Octokit } = require("@octokit/action");
 
-https.get("https://ziglang.org/download/index.json", (res) => {
-  let data = "";
+module.exports = new Promise((resolve, reject) => {
+  https.get("https://ziglang.org/download/index.json", (res) => {
+    let data = "";
 
-  // A chunk of data has been received.
-  res.on("data", (chunk) => {
-    data += chunk;
+    // A chunk of data has been received.
+    res.on("data", (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received.
+    res.on("end", async () => {
+      let res = JSON.parse(data);
+      resolve(await check(res));
+    });
   });
-
-  // The whole response has been received.
-  res.on("end", () => {
-    let res = JSON.parse(data);
-    check(res);
-  });
-});
+})
 
 async function check(data) {
-  if (!data.master.version.startsWith("0.12")) {
-    console.error("Zig master is no longer on 0.12, please update");
-    process.exit(1);
-  }
-  const path = "Formula/z/zig-nightly.rb";
+  const path = "Formula/zig-nightly.rb";
   var file = fs.readFileSync(path).toString();
   const verMatch = /"[\d.]+-dev\.[+-\w]+"/;
   const localVer = file.match(verMatch)[0].replaceAll('"', "");
   const remoteVer = data.master.version;
-  if (localVer == remoteVer) return console.log("Nightly is up to date");
-
-  const dateString = new Date()
-      .toLocaleDateString("en-GB", { day: "numeric", month: "short" })
-      .replace(" ", "-")
-  const branchName = "nightly_update_" + dateString;
-  execSync(`git checkout -b "${branchName}"`);
+  if (localVer == remoteVer) {
+    console.log("Nightly is up to date");
+    return ""
+  }
 
   file = file.replace(verMatch, `"${remoteVer}"`);
 
@@ -52,22 +45,5 @@ async function check(data) {
 
   fs.writeFileSync(path, file);
 
-  execSync(
-    ` git config --global user.name "froxcey";
-      git config --global user.email "danichen204@gmail.com";
-      git add -A;
-      git commit -m "[Autoupdate]: Sync zig@0.12 to ${remoteVer}";
-      git push -f origin ${branchName};`,
-  );
-
-  const octokit = new Octokit();
-  const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-  octokit.pulls.create({
-    owner,
-    repo,
-    base: "main",
-    head: branchName,
-    title: `Nightly update: ${dateString}`,
-    body: `- Update Zig@0.12 to ${remoteVer}`,
-  });
+  return `- Update zig-nightly to ${remoteVer}\n`;
 }

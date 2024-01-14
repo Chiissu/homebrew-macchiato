@@ -1,7 +1,10 @@
 name: Nightly update
 on:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: '16 0 * * *'
+    - cron: '16 22 * * *'
 
 jobs:
   update-zig:
@@ -12,6 +15,6 @@ jobs:
         with:
           version: 12
       - run: npm install @octokit/action
-      - run: node .github/actions/zig-update.js
+      - run: node .github/actions/nightly-update.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -9,9 +9,12 @@ const { Octokit } = require("@octokit/action");
   execSync(`git checkout -b "${branchName}"`);
 
   // Do the check here
-  const zigRes = await require("./zig-update");
-
-  if (zigRes == "") return;
+  const results = [];
+  results.push(
+    await require("./zig-update"),
+    await require("./sdl3-update"),
+    await require("./sdl3_image-update"),
+  );
 
   execSync(
     ` git config --global user.name "froxcey";
@@ -29,6 +32,6 @@ const { Octokit } = require("@octokit/action");
     base: "main",
     head: branchName,
     title: `Nightly update: ${dateString}`,
-    body: zigRes,
+    body: results.join(""),
   });
 })();

@@ -25,7 +25,7 @@ async function check(data) {
   const localVer = file.match(verMatch)[0].replaceAll('"', "");
   const remoteVer = data.master.version;
   if (localVer == remoteVer) {
-    console.log("Nightly is up to date");
+    console.log("Zig is up to date");
     return ""
   }
 
@@ -45,5 +45,5 @@ async function check(data) {
 
   fs.writeFileSync(path, file);
 
-  return `- Update zig-nightly to ${remoteVer}\n`;
+  return `- Update zig to ${remoteVer}\n`;
 }

@@ -6,7 +6,7 @@ const verMatch = /"([a-f]|[0-9])+"/;
 module.exports = new Promise((resolve, reject) => {
   https.get(
     {
-      path: "/repos/libsdl-org/SDL/branches/main",
+      path: "/repos/libsdl-org/SDL_image/branches/main",
       host: "api.github.com",
       headers: { "User-Agent": "Chiissu-Macchiato-Updater/1.0.0" },
     },

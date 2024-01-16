@@ -1,8 +1,5 @@
 name: Nightly update
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '16 22 * * *'
 

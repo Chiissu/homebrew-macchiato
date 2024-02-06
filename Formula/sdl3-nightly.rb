@@ -1,7 +1,7 @@
 class Sdl3Nightly < Formula
   desc "Low-level access to audio, keyboard, mouse, joystick, and graphics"
   homepage "https://www.libsdl.org/"
-  version "b05ea8e04e1bdcd40fbe37a6423a94766c709aef"
+  version "c79462dc50f9a050bbb55b6703ba53d74110f6f1"
   url "https://codeload.github.com/libsdl-org/SDL/tar.gz/#{version}"
   license "Zlib"
 

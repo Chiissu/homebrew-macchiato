@@ -2,21 +2,21 @@ class Jetzig < Formula
   desc "A web framework written in Zig"
   homepage "https://www.jetzig.dev"
   license "MIT"
-  version "31e8ae3"
+  version "25587d4"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://www.jetzig.dev/build-macos-aarch64.zip"
-      sha256 "0947e4e64f33b23988ca7136e89c65a6c48832a21e4c4d7d838a42bf3f6cb25f"
+      sha256 "eeba0abfb0fa55ef33dcc36b67b66e3dc18c2cbf6f2c55245f1be185ec7d3ce7"
     elsif Hardware::CPU.avx2?
       url "https://www.jetzig.dev/build-macos-x86.zip"
-      sha256 "4fc19f7ca33ef96db3fcf0e28035e3eb0861aea909d6d4f7d381403eb3968bae"
+      sha256 "4d7b28b796eff63baafcbe98af8521a3997a297b1139a8cd5f97c9783b8160aa"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     url "https://www.jetzig.dev/build-linux.zip"
-    sha256 "7e4f296b2d6cde4b5b3b883f43e66b46e13398be4fbabba594e48b0c9ab2b6c4"
+    sha256 "8565a5df97afc1eebc62ea2e86861f9580f54dced071bc1cf0cf3b5ab82feb85"
   end
 
   def install

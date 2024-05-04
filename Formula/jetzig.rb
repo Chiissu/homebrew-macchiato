@@ -7,16 +7,16 @@ class Jetzig < Formula
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://www.jetzig.dev/build-macos-aarch64.zip"
-      sha256 "eeba0abfb0fa55ef33dcc36b67b66e3dc18c2cbf6f2c55245f1be185ec7d3ce7"
+      sha256 "89bde389884b636b00a0d1929b0aa139667a20a71aa8ec3f1d4fd7df94dc4ad7"
     elsif Hardware::CPU.avx2?
       url "https://www.jetzig.dev/build-macos-x86.zip"
-      sha256 "4d7b28b796eff63baafcbe98af8521a3997a297b1139a8cd5f97c9783b8160aa"
+      sha256 "7f21e51dd6ab2f05f81b543b8243e7996257f38717b3611bbf9da60f76b0972a"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     url "https://www.jetzig.dev/build-linux.zip"
-    sha256 "8565a5df97afc1eebc62ea2e86861f9580f54dced071bc1cf0cf3b5ab82feb85"
+    sha256 "ed7236fcc98cccef9f80edb19facad811f932eaf4a33e6d117311170a0173b0e"
   end
 
   def install

@@ -1,5 +1,5 @@
-const https = require("https");
-const fs = require("fs");
+import https from "https";
+import fs from "fs";
 
 module.exports = new Promise((resolve, reject) => {
   https.get("https://ziglang.org/download/index.json", (res) => {
@@ -16,7 +16,7 @@ module.exports = new Promise((resolve, reject) => {
       resolve(await check(res));
     });
   });
-})
+});
 
 async function check(data) {
   const path = "Formula/zig-nightly.rb";
@@ -26,7 +26,7 @@ async function check(data) {
   const remoteVer = data.master.version;
   if (localVer == remoteVer) {
     console.log("Zig is up to date");
-    return ""
+    return "";
   }
 
   file = file.replace(verMatch, `"${remoteVer}"`);

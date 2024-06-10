@@ -1,5 +1,5 @@
-const https = require("https");
-const fs = require("fs");
+import https from "https";
+import fs from "fs";
 
 const verMatch = /"([a-f]|[0-9])+"/;
 
@@ -23,7 +23,7 @@ module.exports = new Promise((resolve, reject) => {
         let res = JSON.parse(data);
         resolve(await check(res));
       });
-    },
+    }
   );
 });
 

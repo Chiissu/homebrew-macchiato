@@ -1,5 +1,5 @@
-const { execSync } = require("child_process");
-const { Octokit } = require("@octokit/action");
+import { execSync } from "child_process";
+import { Octokit } from "@octokit/action";
 
 (async () => {
   const dateString = new Date()
@@ -13,7 +13,7 @@ const { Octokit } = require("@octokit/action");
   results.push(
     await require("./zig-update"),
     await require("./sdl3-update"),
-    await require("./sdl3_image-update"),
+    await require("./sdl3_image-update")
   );
 
   execSync(
@@ -21,7 +21,7 @@ const { Octokit } = require("@octokit/action");
       git config --global user.email "danichen204@gmail.com";
       git add -A;
       git commit -m "[Autoupdate]: ${branchName}";
-      git push -f origin ${branchName};`,
+      git push -f origin ${branchName};`
   );
 
   const octokit = new Octokit();

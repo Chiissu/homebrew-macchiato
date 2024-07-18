@@ -10,11 +10,7 @@ import { Octokit } from "@octokit/action";
 
   // Do the check here
   const results = [];
-  results.push(
-    await require("./zig-update"),
-    await require("./sdl3-update"),
-    await require("./sdl3_image-update")
-  );
+  results.push(await (await import("./zig-update.mjs")).default());
 
   execSync(
     ` git config --global user.name "froxcey";

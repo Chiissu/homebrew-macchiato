@@ -1,22 +1,24 @@
 import https from "https";
 import fs from "fs";
 
-module.exports = new Promise((resolve, reject) => {
-  https.get("https://ziglang.org/download/index.json", (res) => {
-    let data = "";
+export default function () {
+  return new Promise((resolve, reject) => {
+    https.get("https://ziglang.org/download/index.json", (res) => {
+      let data = "";
 
-    // A chunk of data has been received.
-    res.on("data", (chunk) => {
-      data += chunk;
-    });
+      // A chunk of data has been received.
+      res.on("data", (chunk) => {
+        data += chunk;
+      });
 
-    // The whole response has been received.
-    res.on("end", async () => {
-      let res = JSON.parse(data);
-      resolve(await check(res));
+      // The whole response has been received.
+      res.on("end", async () => {
+        let res = JSON.parse(data);
+        resolve(await check(res));
+      });
     });
   });
-});
+}
 
 async function check(data) {
   const path = "Formula/zig-nightly.rb";

@@ -1,8 +1,5 @@
 name: Nightly update
-on:
-  schedule:
-    - cron: '16 22 * * *'
-
+on: push
 jobs:
   update-nightly:
     runs-on: ubuntu-latest
@@ -12,6 +9,6 @@ jobs:
         with:
           version: 12
       - run: npm install @octokit/action
-      - run: node .github/actions/nightly-update.js
+      - run: node .github/actions/nightly-update.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

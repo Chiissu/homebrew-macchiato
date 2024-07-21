@@ -47,5 +47,5 @@ async function check(data) {
 
   fs.writeFileSync(path, file);
 
-  return `- Update zig to ${remoteVer}\n`;
+  return `- Update zig-nightly to ${remoteVer}\n`;
 }

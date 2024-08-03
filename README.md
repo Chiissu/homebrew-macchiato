@@ -2,6 +2,8 @@
 
 A sweet Homebrew repository ☕
 
+![](https://media1.tenor.com/m/aDZEMNg3f_sAAAAC/bocchi-the-rock.gif)
+
 ## Install
 
 ```sh

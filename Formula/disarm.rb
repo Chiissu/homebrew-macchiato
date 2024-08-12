@@ -6,7 +6,7 @@ class Disarm < Formula
 
   if OS.mac?
     url "http://newosxbook.com/tools/disarm"
-    sha256 "93417776360596446447cb81cd85d7c5b622f139972c34827ac1ad95ca4c7c79"
+    sha256 "8c4699dda1e3ac48cbe7fb42e806f1ba84100481e8261d9378a58d2c052a43a3"
   elsif OS.linux?
     url "http://newosxbook.com/tools/disarm.ELF64"
     sha256 "c9bbda677132d503b2b68624d9db9aa3e4f77c707233451c88b65b7da402f0da"

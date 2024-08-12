@@ -2,7 +2,7 @@ class Jetzig < Formula
   desc "A web framework written in Zig"
   homepage "https://www.jetzig.dev"
   license "MIT"
-  version "25587d4"
+  version "f5fb5ba"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?

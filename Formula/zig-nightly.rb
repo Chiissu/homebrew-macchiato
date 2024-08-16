@@ -43,12 +43,13 @@ class ZigNightly < Formula
 
   def caveats
     return unless Formula["zig"].any_version_installed?
+    return unless Formula["zig-nominated"].any_version_installed?
     <<~EOS
-      ⚠️ You have the official zig package installed, which conflicts with this nightly version.
+      ⚠️ You have the official or nominated zig package installed, which conflicts with this nightly version.
       To switch to the nightly version, run:
       $ brew link --overwrite zig-nightly
-      To switch back to the official version, run:
-      $ brew link --overwrite zig
+      To switch back to the official or nominated version, run:
+      $ brew link --overwrite zig # or zig-nominated
     EOS
   end
 

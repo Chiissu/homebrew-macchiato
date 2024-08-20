@@ -1,4 +1,4 @@
-class ZigNightly < Formula
+class ZigNominated < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://machengine.org/docs/nominated-zig/"
   version "0.13.0-dev.351+64ef45eb0"

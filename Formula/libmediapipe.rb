@@ -1,8 +1,8 @@
 class Libmediapipe < Formula
   desc "C API for Google's MediaPipe framework"
   homepage "https://github.com/Froxcey/libmediapipe"
-  url "https://github.com/Froxcey/libmediapipe/archive/759abd3968e676a3f5192bb08dca993155bac8c6.zip"
-  sha256 "9e55fcbc96d20716f8510f0d350d3ea809af4c4b151407aa411f0e0ac60572a5"
+  url "https://github.com/Froxcey/libmediapipe/archive/060ae77237719bd4d6452d9cfbb0f778cb066a53.zip"
+  sha256 "3d36d5f128a80ed92ce2c13918d648d1147467967ad9b9db6c511d97d8e5eec8"
   license "GPL-3.0"
   version "0.10.14"
 
@@ -25,15 +25,14 @@ class Libmediapipe < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test openpose`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system bin/"program", "do", "something"`.
     system "false"
+  end
+
+  def caveats
+    <<~EOS
+      ⚠️ THIS IS AN EXPERIMENTAL PACKAGE
+      Bugs and frequent updates are to be expected
+      Use this at your own risk
+    EOS
   end
 end

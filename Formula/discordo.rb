@@ -1,28 +1,44 @@
 class Discordo < Formula
   desc "A lightweight, secure, and feature-rich Discord terminal client"
-  homepage ""
-  url "https://github.com/ayn2op/discordo"
-  version "0.1.0-320ec77"
-  sha256 "bc5bf10dec8178ff20b9ed1ba8b5f8280b4fb3635a43cb6df8837f245a5d3c00"
+  homepage "https://github.com/ayn2op/discordo"
+  version "0.1.0-a0ec15d"
   license "MIT"
 
-  depends_on "go" => :build
+  if OS.mac?
+    if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
+      url "https://nightly.link/ayn2op/discordo/actions/runs/10450399243/discordo_macOS_ARM64.zip"
+      sha256 "bff84c1b6fa998bc61864a7893dd57d874d737f671eba46163ffee206f9c60c6"
+    elsif Hardware::CPU.avx2?
+      url "https://nightly.link/ayn2op/discordo/actions/runs/10450399243/discordo_macOS_X64.zip"
+      sha256 "20f688adf698758accdb7b62af9a63a942e93d1181f7c0a7a090321a6e910817"
+    else
+      odie "Unsupported MacOS architecture."
+    end
+  elsif OS.linux?
+    if Hardware::CPU.avx2?
+      url "https://nightly.link/ayn2op/discordo/actions/runs/10450399243/discordo_Linux_X64.zip"
+      sha256 "80a438a6ae91673af43c551be2b531554f776acd1692c82a56c223f5666d7f27"
+    else
+      odie "Unsupported Linux architecture."
+    end
+  else
+    odie "Unsupported platform."
+  end
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    if build.head?
+      system "go", "build", *std_go_args(ldflags: "-s -w")
+    else
+      bin.install "discordo"
+    end
+  end
+
+  head do
+    url "https://github.com/ayn2op/discordo.git", branch: "main"
+    depends_on "go" => :build
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test discordo`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
     system "false"
   end
 end

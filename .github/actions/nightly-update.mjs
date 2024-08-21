@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { Octokit } from "octokit/action";
+import { Octokit } from "octokit";
 
 (async () => {
   const dateString = new Date()

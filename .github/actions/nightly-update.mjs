@@ -1,6 +1,8 @@
 import { execSync } from "child_process";
 import { Octokit } from "octokit";
 
+const formulae = ["zig-nightly", "zig-nominated", "discordo"];
+
 (async () => {
   const dateString = new Date()
     .toLocaleDateString("en-GB", { day: "numeric", month: "short" })
@@ -8,10 +10,12 @@ import { Octokit } from "octokit";
   const branchName = "nightly_update_" + dateString;
   execSync(`git checkout -b "${branchName}"`);
 
-  // Do the check here
-  const results = [];
-  results.push(await (await import("./zig-nightly.mjs")).default());
-  results.push(await (await import("./zig-nominated.mjs")).default());
+  const promises = formulae.map(async (formula) => {
+    const module = await import(`./${formula}.mjs`);
+    return module.default();
+  });
+
+  const results = await Promise.all(promises);
 
   execSync(
     ` git config --global user.name "froxcey";

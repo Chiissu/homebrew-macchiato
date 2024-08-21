@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { Octokit } from "@octokit/action";
+import { Octokit } from "octokit/action";
 
 (async () => {
   const dateString = new Date()
@@ -10,14 +10,15 @@ import { Octokit } from "@octokit/action";
 
   // Do the check here
   const results = [];
-  results.push(await (await import("./zig-update.mjs")).default());
+  results.push(await (await import("./zig-nightly.mjs")).default());
+  results.push(await (await import("./zig-nominated.mjs")).default());
 
   execSync(
     ` git config --global user.name "froxcey";
       git config --global user.email "danichen204@gmail.com";
       git add -A;
       git commit -m "[Autoupdate]: ${branchName}";
-      git push -f origin ${branchName};`
+      git push -f origin ${branchName};`,
   );
 
   const octokit = new Octokit();

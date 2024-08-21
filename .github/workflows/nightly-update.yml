@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           version: 12
-      - run: npm install @octokit/action
+      - run: npm install octokit
       - run: node .github/actions/nightly-update.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

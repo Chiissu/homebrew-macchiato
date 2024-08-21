@@ -3,7 +3,7 @@ import fs from "fs";
 
 export default function () {
   return new Promise((resolve, reject) => {
-    https.get("https://ziglang.org/download/index.json", (res) => {
+    https.get("https://machengine.org/zig/index.json", (res) => {
       let data = "";
 
       // A chunk of data has been received.
@@ -21,13 +21,13 @@ export default function () {
 }
 
 async function check(data) {
-  const path = "Formula/zig-nightly.rb";
+  const path = "Formula/zig-nominated.rb";
   var file = fs.readFileSync(path).toString();
   const verMatch = /"[\d.]+-dev\.[+-\w]+"/;
   const localVer = file.match(verMatch)[0].replaceAll('"', "");
-  const remoteVer = data.master.version;
+  const remoteVer = data["mach-latest"].version;
   if (localVer == remoteVer) {
-    console.log("Zig is up to date");
+    console.log("zig-nominated is up to date");
     return "";
   }
 
@@ -35,10 +35,10 @@ async function check(data) {
 
   let replacementIndex = -1;
   const newSHA = [
-    data.master["aarch64-macos"].shasum,
-    data.master["x86_64-macos"].shasum,
-    data.master["aarch64-linux"].shasum,
-    data.master["x86_64-linux"].shasum,
+    data["mach-latest"]["aarch64-macos"].shasum,
+    data["mach-latest"]["x86_64-macos"].shasum,
+    data["mach-latest"]["aarch64-linux"].shasum,
+    data["mach-latest"]["x86_64-linux"].shasum,
   ];
   file = file.replace(/sha256 "([a-f]|\d)*"/g, () => {
     replacementIndex++;
@@ -47,5 +47,5 @@ async function check(data) {
 
   fs.writeFileSync(path, file);
 
-  return `- Update zig-nightly to ${remoteVer}\n`;
+  return `- Update zig-nominated to ${remoteVer}\n`;
 }

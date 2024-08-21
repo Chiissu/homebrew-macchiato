@@ -12,12 +12,17 @@ brew tap chiissu/macchiato
 
 ## Formulae
 
-- [Zig-nightly](https://ziglang.org/)
-- [Notabena](https://github.com/ThatFrogDev/notabena/)
-- [Disarm](https://newandroidbook.com/tools/disarm.html)
-- [Discordo](https://github.com/ayn2op/discordo)
-- [SDL3-nightly](https://github.com/libsdl-org/SDL/)
-  - [SDL3_image-nightly](https://github.com/libsdl-org/SDL_image)
+- [zig-nightly](https://ziglang.org/) 🔄
+- [zig-nominated](https://machengine.org/docs/nominated-zig/) 🔄
+- [notabena](https://github.com/ThatFrogDev/notabena/) ✏️
+- [disarm](https://newandroidbook.com/tools/disarm.html)
+- [discordo](https://github.com/ayn2op/discordo)
+- [jetzig](https://www.jetzig.dev/)
+- [libmediapipe](https://github.com/Froxcey/libmediapipe/) ✏️
+
+> 🔄: This package autoupdates itself using Github actions
+>
+> ✏️: Packages from myself or affiliated author
 
 ## Casks
 

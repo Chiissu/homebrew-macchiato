@@ -14,13 +14,13 @@ brew tap chiissu/macchiato
 
 - [zig-nightly](https://ziglang.org/) 🔄
 - [zig-nominated](https://machengine.org/docs/nominated-zig/) 🔄
-- [notabena](https://github.com/ThatFrogDev/notabena/) ✏️
+- [notabena](https://github.com/ThatFrogDev/notabena/) 🔄✏️
 - [disarm](https://newandroidbook.com/tools/disarm.html)
 - [discordo](https://github.com/ayn2op/discordo) 🔄
 - [jetzig](https://www.jetzig.dev/)
 - [libmediapipe](https://github.com/Froxcey/libmediapipe/) ✏️
 
-> 🔄: This package autoupdates itself using Github actions
+> 🔄: This package autoupdates itself everyday using Github actions
 >
 > ✏️: Packages from myself or affiliated author
 

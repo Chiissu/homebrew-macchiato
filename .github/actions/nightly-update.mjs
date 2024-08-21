@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { Octokit } from "octokit";
 
-const formulae = ["zig-nightly", "zig-nominated", "discordo"];
+const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
 
 (async () => {
   const dateString = new Date()

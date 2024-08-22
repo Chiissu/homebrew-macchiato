@@ -1,8 +1,8 @@
 class Libmediapipe < Formula
   desc "C API for Google's MediaPipe framework"
   homepage "https://github.com/Froxcey/libmediapipe"
-  url "https://github.com/Froxcey/libmediapipe/archive/060ae77237719bd4d6452d9cfbb0f778cb066a53.zip"
-  sha256 "3d36d5f128a80ed92ce2c13918d648d1147467967ad9b9db6c511d97d8e5eec8"
+  url "https://github.com/Froxcey/libmediapipe/archive/9b8cc42475ca4570f8478f99a24e212d69e64676.zip"
+  sha256 "bcd6313668794ac56b87aad95cc7e7afde46a158c5249a03f6cdc4d5fc9743a5"
   license "GPL-3.0"
   version "0.10.14"
 

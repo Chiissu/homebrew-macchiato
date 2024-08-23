@@ -20,9 +20,10 @@ export default async function () {
   const owner = "ayn2op",
     repo = "discordo";
   const workflow = (
-    await octokit.rest.actions.listWorkflowRunsForRepo({
+    await octokit.rest.actions.listWorkflowRuns({
       owner,
       repo,
+      workflow_id: "ci.yml",
       branch: "main",
       per_page: 1,
     })

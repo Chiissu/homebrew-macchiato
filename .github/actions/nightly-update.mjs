@@ -26,8 +26,9 @@ const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
   );
 
   const octokit = new Octokit();
-  const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-  octokit.pulls.create({
+  const owner = "Chiissu",
+    repo = "homebrew-macchiato";
+  octokit.rest.pulls.create({
     owner,
     repo,
     base: "main",
@@ -35,4 +36,21 @@ const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
     title: `Nightly update: ${dateString}`,
     body: results.join(""),
   });
+  const pulls = (
+    await octokit.rest.pulls.list({
+      owner,
+      repo,
+      state: "open",
+    })
+  ).data;
+  for (let pull of pulls) {
+    if (!pull.title.startsWith("Nightly update: ")) continue;
+    console.log(pull.user.id);
+    octokit.rest.pulls.update({
+      owner,
+      repo,
+      pull_number: pull.pull_number,
+      state: "closed",
+    });
+  }
 })();

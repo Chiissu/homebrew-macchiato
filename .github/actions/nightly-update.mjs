@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import { Octokit } from "octokit";
+import { Octokit as Action } from "@octokit/action";
 
 const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
 
@@ -25,10 +26,10 @@ const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
       git push -f origin ${branchName};`,
   );
 
-  const octokit = new Octokit();
-  const owner = "Chiissu",
-    repo = "homebrew-macchiato";
-  octokit.rest.pulls.create({
+  const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
+
+  const action = new Action();
+  action.pulls.create({
     owner,
     repo,
     base: "main",
@@ -36,6 +37,7 @@ const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
     title: `Nightly update: ${dateString}`,
     body: results.join(""),
   });
+  const octokit = new Octokit();
   const pulls = (
     await octokit.rest.pulls.list({
       owner,

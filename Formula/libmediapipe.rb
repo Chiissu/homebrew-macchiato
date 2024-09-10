@@ -1,10 +1,10 @@
 class Libmediapipe < Formula
   desc "C API for Google's MediaPipe framework"
   homepage "https://github.com/Froxcey/libmediapipe"
-  url "https://github.com/Froxcey/libmediapipe/archive/9b8cc42475ca4570f8478f99a24e212d69e64676.zip"
-  sha256 "bcd6313668794ac56b87aad95cc7e7afde46a158c5249a03f6cdc4d5fc9743a5"
+  url "https://github.com/Froxcey/libmediapipe/archive/131591e346ecebbfc4b5da206d29cca04bcc4a16.zip"
+  sha256 "55e88c9cca7b88b1b9d8d727904c2143674bad51244e5e87faa9789c0c75553f"
   license "GPL-3.0"
-  version "0.10.14"
+  version "0.10.15"
 
   $arch = "x86_64"
   if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?

@@ -19,6 +19,7 @@ brew tap chiissu/macchiato
 - [discordo](https://github.com/ayn2op/discordo) 🔄
 - [jetzig](https://www.jetzig.dev/)
 - [libmediapipe](https://github.com/Froxcey/libmediapipe/) ✏️
+- [v2d](https://github.com/Chiissu/v2d/) 🔄✏️
 
 > 🔄: This package autoupdates itself everyday using Github actions
 >
@@ -27,4 +28,3 @@ brew tap chiissu/macchiato
 ## Casks
 
 - [VencordInstaller](https://vencord.dev/)
-

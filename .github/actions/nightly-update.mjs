@@ -2,7 +2,13 @@ import { execSync } from "child_process";
 import { Octokit } from "octokit";
 import { createActionAuth } from "@octokit/auth-action";
 
-const formulae = ["zig-nightly", "zig-nominated", "discordo", "notabena"];
+const formulae = [
+  "zig-nightly",
+  "zig-nominated",
+  "discordo",
+  "notabena",
+  "v2d",
+];
 
 (async () => {
   const dateString = new Date()

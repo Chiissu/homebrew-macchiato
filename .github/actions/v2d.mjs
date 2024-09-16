@@ -36,7 +36,7 @@ export default async function () {
     return `sha256 "${sha}"`;
   });
 
-  //fs.writeFileSync(path, file);
+  fs.writeFileSync(path, file);
   return `- Update v2d to ${version}\n`;
 }
 

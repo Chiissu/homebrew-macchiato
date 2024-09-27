@@ -26,7 +26,7 @@ export default async function () {
     return "";
   }
 
-  const sha = fetchAndHash(
+  const sha = await fetchAndHash(
     `https://github.com/Chiissu/v2d/archive/refs/tags/v${version}.tar.gz`,
   );
 

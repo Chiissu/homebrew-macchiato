@@ -1,7 +1,5 @@
 name: Nightly update
-on:
-  schedule:
-    - cron: "16 22 * * *"
+on: push
 jobs:
   update-nightly:
     runs-on: ubuntu-latest

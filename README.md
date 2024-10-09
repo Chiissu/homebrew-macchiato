@@ -23,7 +23,7 @@ brew tap chiissu/macchiato
 
 > 🔄: This package autoupdates itself everyday using Github actions
 >
-> ✏️: Packages from myself or affiliated author
+> ✏️: Official packages from myself or affiliated maintainer
 
 ## Casks
 

@@ -2,6 +2,7 @@ name: Nightly update
 on:
   schedule:
     - cron: "16 22 * * *"
+  workflow_dispatch:
 jobs:
   update-nightly:
     runs-on: ubuntu-latest

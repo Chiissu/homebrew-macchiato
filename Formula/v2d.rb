@@ -2,9 +2,9 @@ class V2d < Formula
   desc "2D-based VTubing studio"
   homepage "https://github.com/Chiissu/v2d"
 
-  version "0.1.1"
+  version "0.2.0"
   url "https://github.com/Chiissu/v2d/archive/refs/tags/v#{version}.tar.gz"
-  sha256 "2e86f6fd66bf557669f0d0a6b04b0a4e587019b8b53496ca5d4a03cb1f1c4854"
+  sha256 "a1b9a639a3ada002595eff8a4fa6e8e4063d62bccf0be4e6c0e07ce9cbeb4d05"
 
   head "https://github.com/Chiissu/v2d.git", branch: "main"
 

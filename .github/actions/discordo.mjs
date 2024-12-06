@@ -25,6 +25,7 @@ export default async function () {
       repo,
       workflow_id: "ci.yml",
       branch: "main",
+      status: "success",
       per_page: 1,
     })
   ).data.workflow_runs[0];

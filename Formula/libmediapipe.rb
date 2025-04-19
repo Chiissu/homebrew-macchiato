@@ -2,7 +2,7 @@ class Libmediapipe < Formula
   desc "C API for Google's MediaPipe framework"
   homepage "https://codeberg.org/Chiissu/libmediapipe"
   license "GPL-3.0"
-  version "0.10.20"
+  version "0.10.22"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?

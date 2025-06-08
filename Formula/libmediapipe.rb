@@ -7,17 +7,17 @@ class Libmediapipe < Formula
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://codeberg.org/Chiissu/libmediapipe/releases/download/v#{version}/libmediapipe-macos-aarch64-#{version}.tar.gz"
-      sha256 "5570d22079074ecc8b5e46bfd3b9a4080c8ffa623a6fb942b827c991f8e65bf8"
+      sha256 "70d0148e2cfdb27fe047c6a90cd37a504713babe73cd1a64a024804fd46a4db5"
     elsif Hardware::CPU.avx2?
       url "https://codeberg.org/Chiissu/libmediapipe/releases/download/v#{version}/libmediapipe-macos-x86_64-#{version}.tar.gz"
-      sha256 "2ca26a2a39802c624897b9c80bb1dc870ed44fbdd6cae69d25be6534937b9ee1"
+      sha256 "d2e6f621ff5838569a6ebde0856ced2948b311447338fd51f53a492060f52985"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.avx2?
       url "https://codeberg.org/Chiissu/libmediapipe/releases/download/v#{version}/libmediapipe-linux-x86_64-#{version}.tar.gz"
-      sha256 "531a1e2b7090044a0dbc31a18b55a69ded60ea7bb95de4f6f78c98180399f688"
+      sha256 "c66d6aa36caa40efdb16f6de8f7ab042adba882fd41df515b5e782be0e150e0e"
     else
       odie "Unsupported Linux architecture."
     end

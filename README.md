@@ -18,7 +18,7 @@ brew tap chiissu/macchiato
 - [notabena](https://github.com/ThatFrogDev/notabena/) 🔄✏️
 - [disarm](https://newandroidbook.com/tools/disarm.html)
 - [discordo](https://github.com/ayn2op/discordo) 🔄
-- [jetzig](https://www.jetzig.dev/)
+- [jetzig](https://www.jetzig.dev/) 🔄(testing)
 - [libmediapipe](https://github.com/Froxcey/libmediapipe/) ✏️
 - [v2d](https://github.com/Chiissu/v2d/) 🔄✏️
 

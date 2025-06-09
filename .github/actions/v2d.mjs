@@ -3,7 +3,7 @@ import { Octokit } from "octokit";
 import https from "https";
 import crypto from "crypto";
 
-export default async function () {
+export default async function (octokit) {
   const path = "Formula/v2d.rb";
   var file = fs.readFileSync(path).toString();
   const verMatch = /"\d\.\d\.\d"/;

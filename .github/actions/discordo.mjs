@@ -1,7 +1,6 @@
 import fs from "fs";
 import { Octokit } from "octokit";
-import https from "https";
-import crypto from "crypto";
+import { fetchAndHash } from "./utils.mjs";
 
 const baseDlLink = "https://nightly.link/ayn2op/discordo/actions/artifacts/";
 const osMap = {
@@ -10,7 +9,7 @@ const osMap = {
   discordo_Linux_X64: 2,
 };
 
-export default async function () {
+export default async function (octokit) {
   const path = "Formula/discordo.rb";
   var file = fs.readFileSync(path).toString();
   const verMatch = /"[\d.]+-[\d|a-f]+"/;
@@ -66,23 +65,4 @@ export default async function () {
   });
   fs.writeFileSync(path, file);
   return `- Update discordo to 0.1.0-${commit}\n`;
-}
-
-function fetchAndHash(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        const hash = crypto.createHash("sha256").setEncoding("hex");
-        https.get(res.headers.location, (res2) => {
-          res2.pipe(hash);
-          res2.on("end", () => {
-            hash.end();
-            resolve(hash.read());
-          });
-        });
-      })
-      .on("error", (err) => {
-        reject(err);
-      });
-  });
 }

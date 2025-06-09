@@ -2,7 +2,7 @@ class Jetzig < Formula
   desc "A web framework written in Zig"
   homepage "https://www.jetzig.dev"
   license "MIT"
-  version "0.1.0-1cb27ff"
+  version "0.0.0-1cb27ff"
 
   depends_on "zig-nightly"
 

@@ -8,6 +8,7 @@ const formulae = [
   "discordo",
   "notabena",
   "v2d",
+  "jetzig",
 ];
 
 (async () => {
@@ -17,9 +18,13 @@ const formulae = [
   const branchName = "nightly_update_" + dateString;
   execSync(`git checkout -b "${branchName}"`);
 
+  const octokit = new Octokit({
+    authStrategy: createActionAuth,
+  });
+
   const promises = formulae.map(async (formula) => {
     const module = await import(`./${formula}.mjs`);
-    return module.default();
+    return module.default(octokit);
   });
 
   const results = await Promise.all(promises);
@@ -32,11 +37,8 @@ const formulae = [
       git push -f origin ${branchName};`,
   );
 
-  const octokit = new Octokit({
-    authStrategy: createActionAuth,
-  });
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-  octokit.rest.pulls.create({
+  const current_pull = await octokit.rest.pulls.create({
     owner,
     repo,
     base: "main",
@@ -52,12 +54,19 @@ const formulae = [
     })
   ).data;
   for (let pull of pulls) {
+    if (pull.user.id != 41898282) continue;
     if (!pull.title.startsWith("Nightly update: ")) continue;
-    console.log(pull.user.id);
+    if (pull.id == current_pull.id) continue;
+    octokit.rest.issues.createComment({
+      owner,
+      repo,
+      issue_number: pull.number,
+      body: "Closing due to inactivity",
+    });
     octokit.rest.pulls.update({
       owner,
       repo,
-      pull_number: pull.pull_number,
+      pull_number: pull.number,
       state: "closed",
     });
   }

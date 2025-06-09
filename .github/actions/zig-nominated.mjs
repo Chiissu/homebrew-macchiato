@@ -1,7 +1,7 @@
 import https from "https";
 import fs from "fs";
 
-export default function () {
+export default function (octokit) {
   return new Promise((resolve, reject) => {
     https.get("https://machengine.org/zig/index.json", (res) => {
       let data = "";

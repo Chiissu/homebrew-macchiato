@@ -36,12 +36,12 @@ class ZlsNominated < Formula
 
   def caveats
     return unless Formula["zls"].any_version_installed?
+    return unless Formula["zls-nightly"].any_version_installed?
     <<~EOS
-      ⚠️ You have other version of the zls package installed, which conflicts with this nominated version.
-      To switch to the nominated version, run:
+      ⚠️ You have other version of the zls package installed, which could conflicts with this version.
+      To use this nominated version, run:
       $ brew link --overwrite zls-nominated
-      To switch back to the official or nightly version, run:
-      $ brew link --overwrite zls
+      Then restart your language server.
     EOS
   end
 

@@ -22,6 +22,8 @@ brew tap chiissu/macchiato
 - [jetzig](https://www.jetzig.dev/) 🔄(testing)
 - [libmediapipe](https://github.com/Froxcey/libmediapipe/) ✏️
 - [v2d](https://github.com/Chiissu/v2d/) 🔄✏️
+- [zine](https://zine-ssg.io/)
+- [ziggy](https://ziggy-lang.io/)
 
 > 🔄: This package autoupdates itself everyday using Github actions
 >

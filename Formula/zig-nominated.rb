@@ -45,11 +45,9 @@ class ZigNominated < Formula
     return unless Formula["zig"].any_version_installed?
     return unless Formula["zig-nightly"].any_version_installed?
     <<~EOS
-      ⚠️ You have the official or nightly zig package installed, which conflicts with this nominated version.
-      To switch to the nominated version, run:
-      $ brew link --overwrite zig-nominated
-      To switch back to the official or nightly version, run:
-      $ brew link --overwrite zig # or zig-nightly
+      ⚠️ You have other version of the zig package installed, which conflicts with this version.
+      To use this nightly version, run:
+      $ brew link --overwrite zig-nightly
     EOS
   end
 

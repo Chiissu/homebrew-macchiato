@@ -1,5 +1,4 @@
 import fs from "fs";
-import { Octokit } from "octokit";
 import { fetchAndHash } from "./utils.mjs";
 
 const baseDlLink = "https://nightly.link/ayn2op/discordo/actions/artifacts/";
@@ -15,7 +14,6 @@ export default async function (octokit) {
   const verMatch = /"[\d.]+-[\d|a-f]+"/;
   const localVer = file.match(verMatch)[0].replaceAll('"', "").split("-")[1];
 
-  const octokit = new Octokit();
   const owner = "ayn2op",
     repo = "discordo";
   const workflow = (

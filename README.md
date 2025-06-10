@@ -14,7 +14,8 @@ brew tap chiissu/macchiato
 
 - [zig-nightly](https://ziglang.org/) 🔄
 - [zig-nominated](https://machengine.org/docs/nominated-zig/) 🔄
-- [zls-nominated](https://zigtools.org/zls/install/)
+- [zls-nightly](https://zigtools.org/zls/) (matching with zig-nightly) 🔄(testing)
+- [zls-nominated](https://zigtools.org/zls/)
 - [notabena](https://github.com/ThatFrogDev/notabena/) 🔄✏️
 - [disarm](https://newandroidbook.com/tools/disarm.html)
 - [discordo](https://github.com/ayn2op/discordo) 🔄

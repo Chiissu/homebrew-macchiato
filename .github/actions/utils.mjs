@@ -19,3 +19,20 @@ export function fetchAndHash(url) {
       });
   });
 }
+
+export function fetch(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      let data = "";
+
+      res.on("data", (chunk) => {
+        data += chunk;
+      });
+
+      res.on("end", () => {
+        let res = JSON.parse(data);
+        resolve(res);
+      });
+    });
+  });
+}

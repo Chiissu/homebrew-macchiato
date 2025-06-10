@@ -64,6 +64,8 @@ const formulae = [
       git push -f origin ${branchName};`,
   );
 
+  console.log("Creating pull request");
+
   octokit.rest.pulls.create({
     owner,
     repo,

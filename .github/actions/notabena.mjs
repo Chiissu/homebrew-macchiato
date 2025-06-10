@@ -1,5 +1,4 @@
 import fs from "fs";
-import { Octokit } from "octokit";
 import https from "https";
 import crypto from "crypto";
 
@@ -9,7 +8,6 @@ export default async function (octokit) {
   const verMatch = /"\d\.\d\.\d"/;
   const localVer = file.match(verMatch)[0].replaceAll('"', "");
 
-  const octokit = new Octokit();
   const owner = "ThatFrogDev",
     repo = "notabena";
   const release = (

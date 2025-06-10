@@ -1,20 +1,20 @@
 import fs from "fs";
 import { fetchAndHash } from "./utils.mjs";
 
-const path = "Formula/zig-nightly.rb";
-const verMatch = /"0\.0\.0-......."/;
+const path = "Formula/jetzig.rb";
+const verMatch = /".\..\..-......."/;
 
 export default async function (octokit) {
   const last_commit = await octokit.rest.repos.listCommits({
     owner: "jetzig-framework",
     repo: "jetzig",
-    path: "cli/",
+    path: "cli",
     per_page: 1,
   });
 
   var file = fs.readFileSync(path).toString();
 
-  const latestVer = last_commit.data.sha.slice(0, 7);
+  const latestVer = last_commit.data[0].sha.slice(0, 7);
   const currVer = file.match(verMatch)[0].slice(7, 14);
 
   if (latestVer == currVer) {
@@ -25,7 +25,7 @@ export default async function (octokit) {
   file = file.replace(verMatch, `"0.0.0-${latestVer}"`);
 
   let results = [];
-  for (let url of t
+  for (let url of file
     .match(/url "https:\/\/jetzig.dev\/downloads\/build-.+.zip"/g)
     .map((item) => item.slice(5, -1))) {
     results.push(await fetchAndHash(url));

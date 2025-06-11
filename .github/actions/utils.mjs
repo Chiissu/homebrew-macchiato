@@ -2,6 +2,7 @@ import https from "https";
 import crypto from "crypto";
 
 export function fetchAndHash(url) {
+  console.log(`Fetch and hashing: ${url}`);
   return new Promise((resolve, reject) => {
     https
       .get(url, (res) => {
@@ -15,12 +16,15 @@ export function fetchAndHash(url) {
         });
       })
       .on("error", (err) => {
+        console.log(`Fetching ${url} failed`);
+        console.error(err);
         reject(err);
       });
   });
 }
 
 export function fetch(url) {
+  console.log(`Fetching: ${url}`);
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       let data = "";
@@ -32,6 +36,11 @@ export function fetch(url) {
       res.on("end", () => {
         let res = JSON.parse(data);
         resolve(res);
+      });
+      res.on("error", (err) => {
+        console.log(`Fetching ${url} failed`);
+        console.error(err);
+        reject(err);
       });
     });
   });

@@ -62,5 +62,5 @@ export default async function (octokit) {
     return `sha256 "${results[i].sha}"`;
   });
   fs.writeFileSync(path, file);
-  return `- Update discordo to 0.1.0-${commit}\n`;
+  return `- Update \`discordo\` to 0.1.0-${commit}\n`;
 }

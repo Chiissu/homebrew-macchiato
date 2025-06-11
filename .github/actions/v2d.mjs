@@ -1,6 +1,5 @@
 import fs from "fs";
-import https from "https";
-import crypto from "crypto";
+import { fetchAndHash } from "./utils.mjs";
 
 export default async function (octokit) {
   const path = "Formula/v2d.rb";
@@ -35,24 +34,5 @@ export default async function (octokit) {
   });
 
   fs.writeFileSync(path, file);
-  return `- Update v2d to ${version}\n`;
-}
-
-function fetchAndHash(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        const hash = crypto.createHash("sha256").setEncoding("hex");
-        https.get(res.headers.location, (res2) => {
-          res2.pipe(hash);
-          res2.on("end", () => {
-            hash.end();
-            resolve(hash.read());
-          });
-        });
-      })
-      .on("error", (err) => {
-        reject(err);
-      });
-  });
+  return `- Update \`v2d\` to ${version}\n`;
 }

@@ -39,5 +39,5 @@ export default async function (octokit) {
 
   fs.writeFileSync(path, file);
 
-  return `- Update jetzig to 0.0.0-${latestVer}\n`;
+  return `- Update \`jetzig\` to 0.0.0-${latestVer}\n`;
 }

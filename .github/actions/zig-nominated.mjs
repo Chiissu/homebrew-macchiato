@@ -1,26 +1,9 @@
-import https from "https";
 import fs from "fs";
+import { fetch } from "./utils.mjs";
 
-export default function (octokit) {
-  return new Promise((resolve, reject) => {
-    https.get("https://machengine.org/zig/index.json", (res) => {
-      let data = "";
+export default async function (octokit) {
+  const data = await fetch("https://machengine.org/zig/index.json");
 
-      // A chunk of data has been received.
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-
-      // The whole response has been received.
-      res.on("end", async () => {
-        let res = JSON.parse(data);
-        resolve(await check(res));
-      });
-    });
-  });
-}
-
-async function check(data) {
   const path = "Formula/zig-nominated.rb";
   var file = fs.readFileSync(path).toString();
   const verMatch = /"[\d.]+-dev\.[+-\w]+"/;
@@ -47,5 +30,5 @@ async function check(data) {
 
   fs.writeFileSync(path, file);
 
-  return `- Update zig-nominated to ${remoteVer}\n`;
+  return `- Update \`zig-nominated\` to ${remoteVer}\n`;
 }

@@ -51,14 +51,17 @@ const formulae = [
 
   const promises = formulae.map(async (formula) => {
     const module = await import(`./${formula}.mjs`);
-    return module.default(octokit);
+    return module.default(octokit).catch(() => {
+      console.error(`Running updater for \`${formula}\` failed`);
+      return `- Updater for \`${formula}\` failed`;
+    });
   });
 
   const results = await Promise.all(promises);
 
   execSync(
     ` git config --global user.name "froxcey";
-      git config --global user.email "danichen204@gmail.com";
+      git config --global user.email "d@frox.tw";
       git add -A;
       git commit -m "[Autoupdate]: ${branchName}";
       git push -f origin ${branchName};`,

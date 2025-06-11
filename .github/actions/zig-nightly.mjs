@@ -11,8 +11,8 @@ export default async function (octokit) {
     ),
   );
   return (
-    (zigUpdated ? `- Updated zig-nightly to ${version}\n` : "") +
-    (zlsVersion == null ? "" : `- Updated zls-nightly to ${zlsVersion}`)
+    (zigUpdated ? `- Update zig-nightly to ${version}\n` : "") +
+    (zlsVersion == null ? "" : `- Update zls-nightly to ${zlsVersion}\n`)
   );
 }
 

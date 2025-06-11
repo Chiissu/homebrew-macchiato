@@ -8,7 +8,7 @@ const formulae = [
   "discordo",
   "notabena",
   "v2d",
-  "jetzig",
+  // "jetzig",
 ];
 
 (async () => {

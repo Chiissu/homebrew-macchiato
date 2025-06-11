@@ -9,7 +9,7 @@ class Disarm < Formula
     sha256 "8c4699dda1e3ac48cbe7fb42e806f1ba84100481e8261d9378a58d2c052a43a3"
   elsif OS.linux?
     url "http://newosxbook.com/tools/disarm.ELF64"
-    sha256 "c9bbda677132d503b2b68624d9db9aa3e4f77c707233451c88b65b7da402f0da"
+    sha256 "47fd0a99aedd189ff389def7299c2d178faa69bd53db615b575d813d81ef8824"
   end
 
   def install

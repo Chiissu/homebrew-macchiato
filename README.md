@@ -24,6 +24,7 @@ brew tap chiissu/macchiato
 - [v2d](https://github.com/Chiissu/v2d/) 🔄✏️
 - [zine](https://zine-ssg.io/)
 - [ziggy](https://ziggy-lang.io/)
+- [superhtml](https://github.com/kristoff-it/superhtml)
 
 > 🔄: This package autoupdates itself everyday using Github actions
 >

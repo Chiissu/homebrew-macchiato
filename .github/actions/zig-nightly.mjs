@@ -2,12 +2,12 @@ import fs from "fs";
 import { fetch } from "./utils.mjs";
 
 export default async function (octokit) {
-  const [version, zigUpdated] = checkZig(
+  const [version, zigUpdated] = await checkZig(
     await fetch("https://ziglang.org/download/index.json"),
   );
-  const zlsVersion = checkZls(
+  const zlsVersion = await checkZls(
     await fetch(
-      `	https://releases.zigtools.org/v1/zls/select-version?zig_version=${version}&compatibility=only-runtime`,
+      `https://releases.zigtools.org/v1/zls/select-version?zig_version=${encodeURIComponent(version)}&compatibility=only-runtime`,
     ),
   );
   return (

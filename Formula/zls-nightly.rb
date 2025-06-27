@@ -1,7 +1,7 @@
 class ZlsNightly < Formula
   desc "Language Server for Zig"
   homepage "https://zigtools.org/zls"
-  version "0.15.0-dev.236+b4591b9e"
+  version "0.15.0-dev.240+9a96d395"
   license "MIT"
 
   depends_on "zig-nightly"
@@ -9,20 +9,20 @@ class ZlsNightly < Formula
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://builds.zigtools.org/zls-macos-aarch64-#{version}.tar.xz"
-      sha256 "d9968807812bd56ccb7643520f2495b94e33d5f2768df6c676e58a9acd945eb6"
+      sha256 "d4030515a9530a52f5a6f6dc99d0b37015975f5cc2ba5a4cdef3a5c581dd2d33"
     elsif Hardware::CPU.avx2?
       url "https://builds.zigtools.org/zls-macos-x86_64-#{version}.tar.xz"
-      sha256 "4d0a858cf46d484b17c0150b0842cca5af8f10e69abc03ab8cd57ad28f56db99"
+      sha256 "19d7e8ac9038ed12c5bfb200416f8a3828c28cbf01e796b63014d73753fce7ff"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.arm?
       url "https://builds.zigtools.org/zls-linux-aarch64-#{version}.tar.xz"
-      sha256 "f2cafaf4839c33ab2daeffbe91596286344abcf2f561fb5d10a487cc5fe4d86d"
+      sha256 "c10cff37b38cd25397046eb27339205449d7ff715f2fcaf22444fad28b34a3f2"
     elsif Hardware::CPU.avx2?
       url "https://builds.zigtools.org/zls-linux-x86_64-#{version}.tar.xz"
-      sha256 "4ef48ff723d8ccd24b33dcc0f2407aa350d5f87e445865cfcf4dd08f83fd2778"
+      sha256 "669dbde77ae62a1aed9c2fc6dd4b6361f5038fef78d49aed059f15681832a1e8"
     else
       odie "Unsupported Linux architecture."
     end

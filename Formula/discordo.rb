@@ -1,23 +1,23 @@
 class Discordo < Formula
   desc "A lightweight, secure, and feature-rich Discord terminal client"
   homepage "https://github.com/ayn2op/discordo"
-  version "0.1.0-cdd97ff"
+  version "0.1.0-7e32bbe"
   license "MIT"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
-      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3703256084.zip"
-      sha256 "1b290ad30df2436d0798a036869486323c13a1cd3fe08b9fd373c97f3a4afb59"
+      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3823646358.zip"
+      sha256 "2bc6ac6e4d56ee87b3a8dca0037109cd45307522e92b742c11952c9f00284dd0"
     elsif Hardware::CPU.avx2?
-      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3703257747.zip"
-      sha256 "6290df30ff910b4203d166896f1997eac4cb260ca2f58c9b7e1f582f89886570"
+      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3823648004.zip"
+      sha256 "4e9458e1a9d526b75911c6b0f9e283a60794ca98a67fd1157e5e8dc93ea24275"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.avx2?
-      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3703256791.zip"
-      sha256 "8f114e6c645070fc4ff18adccdfefe94a3d57282be5d6fc853a72a2606f5bb49"
+      url "https://nightly.link/ayn2op/discordo/actions/artifacts/3823645717.zip"
+      sha256 "ad08369dbbb7389f7cfb15979d7d3307db19d63eb2964f49b4ead87c0a49c5a5"
     else
       odie "Unsupported Linux architecture."
     end

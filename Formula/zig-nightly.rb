@@ -1,26 +1,26 @@
 class ZigNightly < Formula
   desc "Programming language designed for robustness, optimality, and clarity"
   homepage "https://ziglang.org/"
-  version "0.16.0-dev.27+83f773fc6"
+  version "0.16.0-dev.43+99b2b6151"
   license "MIT"
 
   if OS.mac?
     if Hardware::CPU.arm? || Hardware::CPU.in_rosetta2?
       url "https://ziglang.org/builds/zig-aarch64-macos-#{version}.tar.xz"
-      sha256 "75243ad6d2e9fcd634862dda9003883484024fd2e067fc7e4a0f6c524cb6c86e"
+      sha256 "0ca4769697ae2a9680b11e153761be43e007753cbb92456f8e1a25a17c6d1313"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-x86_64-macos-#{version}.tar.xz"
-      sha256 "1ac88b947a6001eb30d41c15c404847209dfe945a27dbce6d1b7d401e4aef325"
+      sha256 "52f1937bdacdcb3091610c18ea5af98cd6eb17ea4acbb23bd74433446d795763"
     else
       odie "Unsupported MacOS architecture."
     end
   elsif OS.linux?
     if Hardware::CPU.arm?
       url "https://ziglang.org/builds/zig-aarch64-linux-#{version}.tar.xz"
-      sha256 "658241c15ad827a89878b2e35e13261cd1c2aaefe9a8bb94ccb907725cf80564"
+      sha256 "1ed66030941bea1954bf63176e5f6a15711c54b393ef134cb1bed382c962c98e"
     elsif Hardware::CPU.avx2?
       url "https://ziglang.org/builds/zig-x86_64-linux-#{version}.tar.xz"
-      sha256 "c260aefaf5bf10bbd48101217874ccc9c0a37513729dabbbfe09bcf18fff1b5b"
+      sha256 "b726e8015b7b6f4999fc1df66456bb35325c95573042e788c244e016987f38f3"
     else
       odie "Unsupported Linux architecture."
     end

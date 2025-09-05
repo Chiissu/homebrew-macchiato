@@ -51,13 +51,14 @@ const formulae = [
 
   const promises = formulae.map(async (formula) => {
     const module = await import(`./${formula}.mjs`);
-    return module.default(octokit).catch(() => {
-      console.error(`Running updater for \`${formula}\` failed`);
-      return `- Updater for \`${formula}\` failed`;
+    return module.default(octokit).catch((err) => {
+      console.error(`Updater for \`${formula}\` failed\n`);
+      console.error(err);
+      return `- Updater for \`${formula}\` failed\n`;
     });
   });
 
-  const results = await Promise.all(promises);
+  const results = await Promise.allSettled(promises);
 
   execSync(
     ` git config --global user.name "froxcey";

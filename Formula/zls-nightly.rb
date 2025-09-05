@@ -1,7 +1,7 @@
 class ZlsNightly < Formula
   desc "Language Server for Zig"
   homepage "https://zigtools.org/zls"
-  version "0.15.0"
+  version "0.15.0-dev.354+c470affb"
   license "MIT"
 
   depends_on "zig-nightly"
